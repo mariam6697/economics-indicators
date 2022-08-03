@@ -1,17 +1,29 @@
-<h3 class="m-4">Indicadores económicos</h3>
+<div class="m-4">
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item active" aria-current="page">Inicio</li>
+    </ol>
+  </nav>
+  <h3 class="my-4">Indicadores económicos</h3>
+</div>
 <ol class="list-group list-group">
   <li
-    class="list-group-item d-flex justify-content-between align-items-start border-0 border-bottom rounded-0"
+    class="list-group-item d-flex justify-content-between align-items-start border-0 border-bottom rounded-0 indicator"
     *ngFor="let indicator of indicators"
   >
     <div class="indicator-symbol" [ngStyle]="{ color: indicator.color }">
       {{ indicator.symbol }}
     </div>
-    <div class="ms-2 selectable">
+    <div
+      class="ms-2 selectable"
+      [routerLink]="'indicators/' + indicator.name + '/values'"
+    >
       <div class="indicator-title">
         {{ indicator.fullName ?? indicator.label }}
       </div>
-      <div class="indicator-desc">{{ indicator.currency.name }}</div>
+      <div *ngIf="indicator.currency" class="indicator-desc">
+        {{ indicator.currency.name }}
+      </div>
     </div>
 
     <div class="actions">

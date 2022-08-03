@@ -1,41 +1,51 @@
 @import "~bootstrap/scss/functions";
 @import "~bootstrap/scss/variables";
 
-.indicator-symbol {
-  width: 1.5rem;
-  min-height: 45px;
-  font-size: 1.25rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-.selectable {
-  cursor: pointer;
-  width: 100%;
-
-  .indicator-title {
-    font-size: 1.05rem;
+.indicator {
+  &:hover {
+    background-color: $gray-100;
   }
 
-  .indicator-desc {
-    font-size: 0.75rem;
-    color: $blue;
+  .indicator-symbol {
+    width: 1.5rem;
+    min-height: 45px;
+    font-size: 1.25rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
   }
-}
-.actions {
-  min-height: 45px;
-  width: 2.5rem;
-  display: flex;
-  flex-flow: row;
-  justify-content: space-between;
-  cursor: pointer;
-  align-items: center;
+  .selectable {
+    cursor: pointer;
+    width: 100%;
+    transition: color 0.2s ease-in;
+    &:hover {
+      color: $blue;
+    }
 
-  .info {
-    color: $blue;
+    .indicator-title {
+      font-size: 1.05rem;
+    }
+
+    .indicator-desc {
+      font-size: 0.75rem;
+      color: $blue;
+    }
   }
+  .actions {
+    min-height: 45px;
+    width: 2.5rem;
+    display: flex;
+    flex-flow: row;
+    justify-content: space-between;
+    cursor: pointer;
+    align-items: center;
 
-  .chevron {
-    color: $gray-600;
+    .info {
+      color: $blue;
+    }
+
+    .chevron {
+      color: $gray-600;
+    }
   }
 }

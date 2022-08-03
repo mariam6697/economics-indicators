@@ -7,7 +7,7 @@ import { Title } from '@angular/platform-browser';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  title = 'Indicadores Económicos';
+  title: string = 'Indicadores Económicos';
 
   constructor(private titleService: Title) {
     this.titleService.setTitle(this.title);

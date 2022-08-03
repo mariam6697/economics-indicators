@@ -7,6 +7,13 @@ const routes: Routes = [
     loadChildren: () =>
       import('./main-list/main-list.module').then((m) => m.MainListModule),
   },
+  {
+    path: 'indicators/:indicatorName/values',
+    loadChildren: () =>
+      import('./indicator-values/indicator-values.module').then(
+        (m) => m.IndicatorValuesModule
+      ),
+  },
 ];
 
 @NgModule({

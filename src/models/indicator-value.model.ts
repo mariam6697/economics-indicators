@@ -5,3 +5,13 @@ export default interface IndicatorValue {
   date: string;
   indicator?: Indicator;
 }
+
+export class IndicatorValueClass implements IndicatorValue {
+  value: string;
+  date: string;
+
+  constructor(value: string, date: string) {
+    this.value = value;
+    this.date = date;
+  }
+}

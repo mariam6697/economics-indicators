@@ -1,4 +1,6 @@
+import { CommonModule } from '@angular/common';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { RouterTestingModule } from '@angular/router/testing';
 
 import { MainListComponent } from './main-list.component';
 
@@ -8,9 +10,9 @@ describe('MainListComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ MainListComponent ]
-    })
-    .compileComponents();
+      imports: [RouterTestingModule, CommonModule],
+      declarations: [MainListComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(MainListComponent);
     component = fixture.componentInstance;
