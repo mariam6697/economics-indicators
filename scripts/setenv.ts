@@ -16,16 +16,6 @@ export const environment = {
 };
 `;
 
-writeFile(`./src/environments/environment.prod.ts`, '', (err: any) => {
-  if (err) {
-    console.log(err);
-  }
-});
-writeFile(`./src/environments/environment.ts`, '', (err: any) => {
-  if (err) {
-    console.log(err);
-  }
-});
 writeFile(targetPath, environmentFileContent, (err: any) => {
   if (err) {
     console.log(err);
