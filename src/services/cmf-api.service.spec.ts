@@ -16,6 +16,7 @@ describe('CmfApiService', () => {
     name: 'dolar',
     label: 'Dólar',
     symbol: '$',
+    monthly: false,
     currency: testCurrency,
     color: '#228B22',
   };

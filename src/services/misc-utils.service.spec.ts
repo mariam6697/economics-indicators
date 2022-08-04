@@ -16,6 +16,7 @@ describe('MiscUtilsService', () => {
     name: 'dolar',
     label: 'Dólar',
     symbol: '$',
+    monthly: false,
     currency: testCurrency,
     color: '#228B22',
   };
@@ -35,7 +36,19 @@ describe('MiscUtilsService', () => {
   });
 
   it('getDateString should return a valid value', () => {
-    const result: string = service.getDateString('2022-08-04');
+    const result: string = service.getDateString('2022-08-04', testIndicator);
     expect(result).toBe('04/08/2022');
+  });
+
+  it('getDateString should return a valid value with monthly indicator', () => {
+    const monthlyIndicator: Indicator = {
+      ...testIndicator,
+      ...{ monthly: true },
+    };
+    const result: string = service.getDateString(
+      '2022-08-04',
+      monthlyIndicator
+    );
+    expect(result).toBe('Agosto 2022');
   });
 });
