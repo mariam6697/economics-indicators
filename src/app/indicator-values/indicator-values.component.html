@@ -3,7 +3,7 @@
     <ol class="breadcrumb">
       <li class="breadcrumb-item"><a href="/">Inicio</a></li>
       <li *ngIf="indicator.label" class="breadcrumb-item active">
-        Valores {{ indicator.fullName ?? indicator.label }}
+        Valores {{ indicator.label }}
       </li>
     </ol>
   </nav>
@@ -52,7 +52,7 @@
         "
       >
         <td>{{ getDateString(value.date) }}</td>
-        <td>{{ getValueString(value.value) }}</td>
+        <td style="font-weight: bold">{{ getValueString(value.value) }}</td>
       </tr>
     </tbody>
   </table>

@@ -133,6 +133,7 @@ export class IndicatorDetailsComponent implements OnInit {
         {
           name: 'Valor',
           data: valuesOnly,
+          color: '#fd7e14',
         },
       ],
       chart: {

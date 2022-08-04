@@ -3,7 +3,7 @@
     <ol class="breadcrumb">
       <li class="breadcrumb-item"><a href="/">Inicio</a></li>
       <li *ngIf="indicator.label" class="breadcrumb-item active">
-        Detalles {{ indicator.fullName ?? indicator.label }}
+        Detalles {{ indicator.label }}
       </li>
     </ol>
   </nav>
@@ -27,35 +27,42 @@
           {{ getValueString(lastValue.value) }}
         </div>
         <div *ngIf="lastValue.date" class="date">
-          Fecha: {{ getDateString(lastValue.date) }}
+          Fecha:
+          <span style="font-weight: 500">{{
+            getDateString(lastValue.date)
+          }}</span>
         </div>
         <div *ngIf="indicator.currency" class="unit">
-          Unidad de medida: {{ indicator.currency.name }}
-          {{
-            indicator.currency.isoCode
-              ? "(" + indicator.currency.isoCode + ")"
-              : ""
-          }}
+          Unidad de medida:
+          <span style="font-weight: 500"
+            >{{ indicator.currency.name }}
+            {{
+              indicator.currency.isoCode
+                ? "(" + indicator.currency.isoCode + ")"
+                : ""
+            }}</span
+          >
         </div>
       </div>
     </div>
-    <div
-      class="my-4"
-      *ngIf="
-        chartOptions.series &&
-        chartOptions.chart &&
-        chartOptions.xaxis &&
-        chartOptions.title &&
-        chartOptions.dataLabels
-      "
-    >
-      <apx-chart
-        [series]="chartOptions.series"
-        [chart]="chartOptions.chart"
-        [xaxis]="chartOptions.xaxis"
-        [title]="chartOptions.title"
-        [dataLabels]="chartOptions.dataLabels"
-      ></apx-chart>
-    </div>
   </div>
+</div>
+<div
+  class="my-4 mx-2"
+  *ngIf="
+    chartOptions &&
+    chartOptions.series &&
+    chartOptions.chart &&
+    chartOptions.xaxis &&
+    chartOptions.title &&
+    chartOptions.dataLabels
+  "
+>
+  <apx-chart
+    [series]="chartOptions.series"
+    [chart]="chartOptions.chart"
+    [xaxis]="chartOptions.xaxis"
+    [title]="chartOptions.title"
+    [dataLabels]="chartOptions.dataLabels"
+  ></apx-chart>
 </div>

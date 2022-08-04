@@ -3,11 +3,12 @@ import { BrowserModule } from '@angular/platform-browser';
 import { RouterTestingModule } from '@angular/router/testing';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AppComponent } from './app.component';
+import { SharedModule } from './shared/shared.module';
 
 describe('AppComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [RouterTestingModule, NgbModule, BrowserModule],
+      imports: [RouterTestingModule, NgbModule, BrowserModule, SharedModule],
       declarations: [AppComponent],
     }).compileComponents();
   });

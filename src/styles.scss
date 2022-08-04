@@ -6,3 +6,26 @@
 @import "~bootstrap/scss/variables";
 @import "~bootstrap/scss/mixins";
 @import "~bootstrap-icons/font/bootstrap-icons.css";
+
+$breadcrumb-active-color: $orange;
+
+.breadcrumb-item > a {
+  color: $orange;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+ngb-pagination {
+  .page-link.active,
+  .active > .page-link {
+    background-color: $orange;
+    border-color: $orange;
+  }
+
+  .page-link {
+    color: $orange;
+  }
+}
