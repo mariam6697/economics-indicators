@@ -20,7 +20,6 @@ Sentry.init({
     }),
   ],
   tracesSampleRate: 1.0,
-  debug: true,
   environment: environment.production ? 'production' : 'development',
 });
 

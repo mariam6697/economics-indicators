@@ -15,8 +15,15 @@ export class MiscUtilsService {
     return `${indicator.currency?.symbol} ${value}`;
   };
 
-  getDateString = (date: string): string => {
-    const dateString = moment(date).format('DD/MM/YYYY');
-    return dateString;
+  getDateString = (date: string, indicator?: Indicator): string => {
+    moment.locale('es-ES');
+    let format = 'DD/MM/YYYY';
+    if (indicator && indicator.monthly) {
+      format = 'MMMM YYYY';
+    }
+    const dateString = moment(date).format(format);
+    return indicator && indicator.monthly
+      ? dateString.charAt(0).toUpperCase() + dateString.slice(1)
+      : dateString;
   };
 }

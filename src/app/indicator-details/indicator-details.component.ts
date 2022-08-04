@@ -38,7 +38,7 @@ export class IndicatorDetailsComponent implements OnInit {
   @ViewChild('chart') chart!: ChartComponent;
   public chartOptions!: Partial<ChartOptions>;
   indicatorName: string = '';
-  indicator: Indicator = new IndicatorClass('', '', '');
+  indicator: Indicator = new IndicatorClass('', '', '', false);
   title: string = 'Detalle | Indicadores Económicos';
   loading: boolean = true;
   lastValue!: IndicatorValue;
@@ -162,6 +162,6 @@ export class IndicatorDetailsComponent implements OnInit {
   };
 
   getDateString = (date: string): string => {
-    return this.miscUtilsService.getDateString(date);
+    return this.miscUtilsService.getDateString(date, this.indicator);
   };
 }

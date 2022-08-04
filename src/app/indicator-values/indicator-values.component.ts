@@ -15,7 +15,7 @@ import { MiscUtilsService } from 'src/services/misc-utils.service';
 })
 export class IndicatorValuesComponent implements OnInit {
   indicatorName: string = '';
-  indicator: Indicator = new IndicatorClass('', '', '');
+  indicator: Indicator = new IndicatorClass('', '', '', false);
   title: string = 'Valores | Indicadores Económicos';
   values: IndicatorValue[] = [];
   selectedYear: string = '2022';
@@ -78,6 +78,9 @@ export class IndicatorValuesComponent implements OnInit {
           this.selectedYear
         );
       this.values = values;
+      if (indicator.monthly) {
+        this.limit = 12;
+      }
     } catch (error: any) {
       // handle error
     } finally {
@@ -95,6 +98,6 @@ export class IndicatorValuesComponent implements OnInit {
   };
 
   getDateString = (date: string): string => {
-    return this.miscUtilsService.getDateString(date);
+    return this.miscUtilsService.getDateString(date, this.indicator);
   };
 }
