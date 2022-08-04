@@ -1,0 +1,61 @@
+<div class="m-4">
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="/">Inicio</a></li>
+      <li *ngIf="indicator.label" class="breadcrumb-item active">
+        Detalles {{ indicator.fullName ?? indicator.label }}
+      </li>
+    </ol>
+  </nav>
+  <h3 class="my-4">
+    {{
+      indicator.label.length > 0 ? indicator.label + ": Detalles" : "Detalles"
+    }}
+  </h3>
+  <div *ngIf="loading" class="loading-container">
+    <div class="spinner-border" style="width: 3rem; height: 3rem">
+      <span class="visually-hidden">Cargando...</span>
+    </div>
+  </div>
+  <div *ngIf="!loading">
+    <div *ngIf="error" class="alert alert-warning" role="alert">
+      Ocurrió un error al cargar los datos
+    </div>
+    <div class="row align-items-start">
+      <div *ngIf="lastValue" class="col last-value">
+        <div *ngIf="lastValue.value" class="value">
+          {{ getValueString(lastValue.value) }}
+        </div>
+        <div *ngIf="lastValue.date" class="date">
+          Fecha: {{ getDateString(lastValue.date) }}
+        </div>
+        <div *ngIf="indicator.currency" class="unit">
+          Unidad de medida: {{ indicator.currency.name }}
+          {{
+            indicator.currency.isoCode
+              ? "(" + indicator.currency.isoCode + ")"
+              : ""
+          }}
+        </div>
+      </div>
+    </div>
+    <div
+      class="my-4"
+      *ngIf="
+        chartOptions.series &&
+        chartOptions.chart &&
+        chartOptions.xaxis &&
+        chartOptions.title &&
+        chartOptions.dataLabels
+      "
+    >
+      <apx-chart
+        [series]="chartOptions.series"
+        [chart]="chartOptions.chart"
+        [xaxis]="chartOptions.xaxis"
+        [title]="chartOptions.title"
+        [dataLabels]="chartOptions.dataLabels"
+      ></apx-chart>
+    </div>
+  </div>
+</div>

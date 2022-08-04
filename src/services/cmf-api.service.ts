@@ -5,7 +5,6 @@ import IndicatorValue, {
   IndicatorValueClass,
 } from 'src/models/indicator-value.model';
 import Indicator from 'src/models/indicator.model';
-import PaginatedValues from 'src/models/paginated-values.model';
 
 @Injectable({
   providedIn: 'root',

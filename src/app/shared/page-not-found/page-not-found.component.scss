@@ -1,0 +1,15 @@
+.not-found {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 1rem;
+  .bi::before {
+    font-size: 15rem;
+    opacity: 0.5;
+  }
+  .message {
+    font-size: 1.5rem;
+    margin: 1rem;
+  }
+}

@@ -3,14 +3,14 @@
     <ol class="breadcrumb">
       <li class="breadcrumb-item"><a href="/">Inicio</a></li>
       <li *ngIf="indicator.label" class="breadcrumb-item active">
-        {{ indicator.fullName ?? indicator.label }}
+        Valores {{ indicator.fullName ?? indicator.label }}
       </li>
     </ol>
   </nav>
   <h3 class="my-4">
     {{
       indicator.label.length > 0
-        ? indicator.label + ": valores por año"
+        ? indicator.label + ": Valores por año"
         : "Valores por año"
     }}
   </h3>

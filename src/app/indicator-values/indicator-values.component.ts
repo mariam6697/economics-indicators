@@ -1,13 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { async } from '@angular/core/testing';
 import { Title } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
-import * as moment from 'moment';
 import IndicatorValue from 'src/models/indicator-value.model';
 import Indicator, { IndicatorClass } from 'src/models/indicator.model';
-import PaginatedValues from 'src/models/paginated-values.model';
 import { CmfApiService } from 'src/services/cmf-api.service';
 import { IndicatorsService } from 'src/services/indicators.service';
+import { MiscUtilsService } from 'src/services/misc-utils.service';
 
 @Component({
   selector: 'app-indicator-values',
@@ -31,7 +29,8 @@ export class IndicatorValuesComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     private indicatorsService: IndicatorsService,
     private titleService: Title,
-    private cmfApiService: CmfApiService
+    private cmfApiService: CmfApiService,
+    private miscUtilsService: MiscUtilsService
   ) {
     this.years = (startYear: number) => {
       let currentYear: number = new Date().getFullYear();
@@ -90,14 +89,10 @@ export class IndicatorValuesComponent implements OnInit {
   };
 
   getValueString = (value: string): string => {
-    if (this.indicator.currency?.symbolPositionRight) {
-      return `${value} ${this.indicator.currency.symbol}`;
-    }
-    return `${this.indicator.currency?.symbol} ${value}`;
+    return this.miscUtilsService.getValueString(value, this.indicator);
   };
 
   getDateString = (date: string): string => {
-    const dateString = moment(date).format('DD/MM/YYYY');
-    return dateString;
+    return this.miscUtilsService.getDateString(date);
   };
 }
