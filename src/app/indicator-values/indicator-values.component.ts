@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { captureException } from '@sentry/angular';
 import IndicatorValue from 'src/models/indicator-value.model';
 import Indicator, { IndicatorClass } from 'src/models/indicator.model';
 import { CmfApiService } from 'src/services/cmf-api.service';
@@ -30,7 +31,8 @@ export class IndicatorValuesComponent implements OnInit {
     private indicatorsService: IndicatorsService,
     private titleService: Title,
     private cmfApiService: CmfApiService,
-    private miscUtilsService: MiscUtilsService
+    private miscUtilsService: MiscUtilsService,
+    private router: Router
   ) {
     this.years = (startYear: number) => {
       let currentYear: number = new Date().getFullYear();
@@ -58,7 +60,7 @@ export class IndicatorValuesComponent implements OnInit {
     const indicator: Indicator | null =
       this.indicatorsService.getIndicatorByName(name);
     if (!indicator) {
-      // handle error
+      this.router.navigate([`/404`]);
     }
     this.titleService.setTitle(
       `Valores: ${indicator!.label} | Indicadores Económicos`
