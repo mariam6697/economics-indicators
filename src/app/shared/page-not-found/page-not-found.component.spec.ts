@@ -8,9 +8,8 @@ describe('PageNotFoundComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ PageNotFoundComponent ]
-    })
-    .compileComponents();
+      declarations: [PageNotFoundComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(PageNotFoundComponent);
     component = fixture.componentInstance;
@@ -19,5 +18,13 @@ describe('PageNotFoundComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it(`should render 'Not Found' message`, () => {
+    fixture.detectChanges();
+    const compiled = fixture.nativeElement as HTMLElement;
+    expect(compiled.querySelector('.message')?.textContent).toContain(
+      'El recurso solicitado no existe'
+    );
   });
 });

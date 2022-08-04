@@ -20,7 +20,17 @@ describe('IndicatorDetailsComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('should create the component', () => {
     expect(component).toBeTruthy();
+  });
+
+  it(`should have as title 'Detalle | Indicadores Económicos'`, () => {
+    expect(component.title).toEqual('Detalle | Indicadores Económicos');
+  });
+
+  it('should render title', () => {
+    fixture.detectChanges();
+    const compiled = fixture.nativeElement as HTMLElement;
+    expect(compiled.querySelector('h3')?.textContent).toContain('Detalles');
   });
 });

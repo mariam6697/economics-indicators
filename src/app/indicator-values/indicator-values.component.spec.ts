@@ -29,4 +29,14 @@ describe('IndicatorValuesComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it(`should have as title 'Valores | Indicadores Económicos'`, () => {
+    expect(component.title).toEqual('Valores | Indicadores Económicos');
+  });
+
+  it('should render title', () => {
+    fixture.detectChanges();
+    const compiled = fixture.nativeElement as HTMLElement;
+    expect(compiled.querySelector('h3')?.textContent).toContain('Valores');
+  });
 });

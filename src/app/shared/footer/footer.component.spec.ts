@@ -8,9 +8,8 @@ describe('FooterComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ FooterComponent ]
-    })
-    .compileComponents();
+      declarations: [FooterComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(FooterComponent);
     component = fixture.componentInstance;
@@ -19,5 +18,13 @@ describe('FooterComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should render footer message', () => {
+    fixture.detectChanges();
+    const compiled = fixture.nativeElement as HTMLElement;
+    expect(compiled.querySelector('.footer')?.textContent).toContain(
+      'Hecho con ❤️ en Santiago de Chile'
+    );
   });
 });

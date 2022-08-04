@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import Currency from 'src/models/currency.model';
 import Indicator from 'src/models/indicator.model';
 import { IndicatorsService } from 'src/services/indicators.service';
 
@@ -9,6 +8,7 @@ import { IndicatorsService } from 'src/services/indicators.service';
   styleUrls: ['./main-list.component.scss'],
 })
 export class MainListComponent implements OnInit {
+  title: string = 'Indicadores Económicos';
   indicators: Indicator[] = [];
 
   constructor(private indicatorsService: IndicatorsService) {}
